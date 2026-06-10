@@ -1,0 +1,6 @@
+{
+  "name": "bestehandcreme.xyz - Handcreme Guide",
+  "description": "A minimalist, curated selection of the best hand creams from Germany, France, and South Korea.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
