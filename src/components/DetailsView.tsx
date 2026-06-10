@@ -167,7 +167,11 @@ export function DetailsView() {
                   <tr key={item.id} className="hover:bg-zinc-50 transition-colors group">
                     <td className="px-5 py-4 text-blue-700 font-bold">.0{item.id}</td>
                     <td className="px-5 py-4 text-zinc-900">{item.brand}</td>
-                    <td className="px-5 py-4 text-zinc-700 font-sans font-medium line-clamp-1 border-b-0">{item.name}</td>
+                    <td className="px-5 py-4 text-zinc-700 font-sans font-medium line-clamp-1 border-b-0">
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 hover:underline">
+                        {item.name}
+                      </a>
+                    </td>
                     <td className="px-5 py-4 text-zinc-600">{item.priceLevel}</td>
                   </tr>
                 ))}

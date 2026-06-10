@@ -125,7 +125,7 @@ export function HomeView() {
                   {/* Image / Platzhalter */}
                   <div className="aspect-[4/5] bg-zinc-100 mb-8 overflow-hidden relative rounded-sm border border-zinc-200">
                     <img
-                      src={item.image}
+                      src={`${import.meta.env.BASE_URL}${item.image.replace('./', '')}`}
                       alt={`${item.brand} Handcreme`}
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';

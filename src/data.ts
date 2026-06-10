@@ -504,7 +504,7 @@ export const ingredientDictionary: Record<string, IngredientDetails> = {
   }
 };
 
-export const allTags = Array.from(new Set(recommendations.flatMap(r => r.tags)))
+export const allTags = Array.from(new Set(recommendations.reduce((acc, r) => acc.concat(r.tags), [] as string[])))
   .filter(tag => !['Ceramide', 'Sheabutter', 'D-Panthenol', 'Panthenol', 'Glycerin', 'Allantoin', 'Urea', 'Bambus', 'Q10', 'Macadamia', 'Bienenwachs', 'Totes Meer Salz', 'Nachtkerzenöl'].includes(tag))
   .sort();
 export const allCountries = Array.from(new Set(recommendations.map(r => r.country))).sort();
