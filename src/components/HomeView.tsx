@@ -37,8 +37,39 @@ export function HomeView() {
     setActiveFilter('Alle');
   };
 
+  const schemaData = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": filtered.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Product",
+          "name": item.name,
+          "brand": {
+            "@type": "Brand",
+            "name": item.brand
+          },
+          "description": item.description,
+          "url": item.link,
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "url": item.link,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      }))
+    };
+  }, [filtered]);
+
   return (
     <>
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} 
+      />
       {/* Hero Section */}
       <section className="px-8 lg:px-16 pt-20 pb-12 mx-auto xl:max-w-7xl">
         <div className="max-w-3xl">

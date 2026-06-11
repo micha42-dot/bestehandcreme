@@ -60,9 +60,14 @@ function App() {
 
       {currentView === 'home' && (
         <footer className="mt-auto px-8 lg:px-16 pb-12 mx-auto xl:max-w-7xl font-mono w-full">
-          <div className="flex flex-col md:flex-row items-center justify-between text-zinc-500 border-t border-zinc-200 pt-8 gap-6 md:gap-4">
-            <span className="text-xs tracking-widest uppercase text-center md:text-left shrink-0">bestehandcreme.xyz :: sys.db</span>
-            <span className="text-[10px] sm:text-xs text-zinc-600 text-center md:text-right uppercase max-w-2xl leading-relaxed">
+          <div className="flex flex-col md:flex-row items-start justify-between text-zinc-500 border-t border-zinc-200 pt-8 gap-6 md:gap-4">
+            <div className="flex flex-col gap-2 shrink-0 items-center md:items-start w-full md:w-auto">
+              <span className="text-xs tracking-widest uppercase text-center md:text-left">bestehandcreme.xyz :: sys.db</span>
+              <a href="https://michaelfoertsch.de/impressum.html" target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-widest hover:text-zinc-900 transition-colors">
+                Impressum
+              </a>
+            </div>
+            <span className="text-[8px] sm:text-[9px] text-zinc-400 text-center md:text-right uppercase max-w-2xl leading-relaxed">
               *Hinweis: Bei den Kauf-Buttons handelt es sich um Referral-/Affiliate-Links. Wenn Sie über diese Links einkaufen, erhalten wir eine kleine Provision, ohne dass sich der Preis für Sie ändert.
             </span>
           </div>
