@@ -1,12 +1,34 @@
 import React, { useState, useMemo } from 'react';
 import { filterCategories, categoryMapping, recommendations } from '../data';
-import { Search, Filter, Sparkles, Leaf, Droplets, Info, MoveRight } from 'lucide-react';
+import { Search, Filter, Sparkles, Leaf, Droplets, Info, MoveRight, ExternalLink, CheckCircle2 } from 'lucide-react';
 
 const IconMap: Record<string, React.FC<any>> = {
   sparkles: Sparkles,
   leaf: Leaf,
   droplets: Droplets,
 };
+
+function ExpandableIngredients({ ingredients }: { ingredients: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = ingredients.length > 80;
+
+  return (
+    <div className="mb-6">
+      <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Hauptinhaltsstoffe (Auszug)</h4>
+      <p className={`text-xs text-zinc-600 font-mono leading-relaxed transition-all duration-300 ${expanded ? '' : 'line-clamp-3'}`}>
+        {ingredients}
+      </p>
+      {isLong && (
+        <button 
+          onClick={() => setExpanded(!expanded)} 
+          className="text-[10px] mt-2 font-mono uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors cursor-pointer"
+        >
+          {expanded ? 'Weniger anzeigen' : 'Mehr ausklappen'}
+        </button>
+      )}
+    </div>
+  );
+}
 
 export function HomeView() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -72,13 +94,23 @@ export function HomeView() {
       />
       {/* Hero Section */}
       <section className="px-8 lg:px-16 pt-20 pb-12 mx-auto xl:max-w-7xl">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
+          <div className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-6 flex items-center gap-2">
+             <span className="w-2 h-2 rounded-full bg-green-500"></span> 
+             Zuletzt aktualisiert: 12.06.2026
+          </div>
+          
           <h1 className="font-medium text-4xl mb-6 tracking-tight leading-none text-zinc-950">
-            Die <span className="bg-yellow-300 text-blue-800 px-2 py-0.5 rounded-sm">nerdige</span> Handpflege-Datenbank.
+            Die persönliche <span className="bg-yellow-300 text-blue-800 px-2 py-0.5 rounded-sm">Handcreme-Datenbank</span> mit Inhaltsstoff-Check.
           </h1>
-          <p className="text-base md:text-lg text-zinc-700 max-w-2xl font-normal leading-relaxed mb-10">
-            Keine algorithmische Selektion. Hierbei handelt es sich um eine privat getestete, manuell kuratierte Handcreme-Datenbank. Empfehlungen auf privaten Erfahrungen und Inhaltsstoffen.
-          </p>
+          
+          <div className="text-base md:text-lg text-zinc-700 max-w-3xl font-normal leading-relaxed mb-10 space-y-4">
+            <p>
+              Diese Seite ist ein privates Projekt aus persönlicher Neugier, vielen ausprobierten Handcremes und einer etwas ausufernden Faszination für Inhaltsstoffe. 
+              Ich sammle hier Handcremes, vergleiche ihre Formulierungen und notiere, welche Produkte für welche Hautbedürfnisse sinnvoll wirken könnten. 
+              Das ist kein Labortest und keine medizinische Beratung, sondern eine persönliche, möglichst transparente Handcreme-Datenbank.
+            </p>
+          </div>
 
           {/* Suchfeld */}
           <div className="relative max-w-md">
@@ -98,20 +130,18 @@ export function HomeView() {
 
       {/* Filter Section Box */}
       <div className="px-8 lg:px-16 mb-12 mx-auto xl:max-w-7xl">
-        <div className="bg-zinc-50 border border-zinc-200 p-5 rounded-sm shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5">
+        <div className="bg-white border-t border-b border-zinc-200 py-5 flex flex-col md:flex-row md:items-center gap-5">
           {/* Info & Label */}
           <div className="flex items-center gap-3 select-none">
-            <div className="bg-zinc-200/60 p-2 rounded-sm text-zinc-700 shrink-0">
+            <div className="bg-zinc-100 p-2 rounded-sm text-zinc-700 shrink-0">
               <Filter className="w-4 h-4" />
             </div>
             <div>
               <span className="text-xs font-mono uppercase tracking-wider font-bold text-zinc-950 block">Schnellfilter nach Kriterien</span>
-              <p className="text-[10px] text-zinc-500 font-mono">Wähle ein Attribut zur schnellen Eingrenzung</p>
             </div>
           </div>
           
-          {/* Divider inside box for mobile, hide on desktop */}
-          <div className="h-px bg-zinc-200 md:hidden w-full"></div>
+          <div className="h-px bg-zinc-200 flex-grow hidden md:block"></div>
 
           {/* Button Container (Flexible wrap) */}
           <div className="flex flex-wrap gap-2 items-center">
@@ -154,7 +184,7 @@ export function HomeView() {
               return (
                 <article key={item.id} className="flex flex-col border border-zinc-200 bg-white p-6 rounded-sm group shadow-sm hover:shadow-md transition-shadow duration-300">
                   {/* Image / Platzhalter */}
-                  <div className="aspect-[4/5] bg-zinc-100 mb-8 overflow-hidden relative rounded-sm border border-zinc-200">
+                  <div className="aspect-[4/5] bg-zinc-100 mb-6 overflow-hidden relative rounded-sm border border-zinc-200">
                     <img
                       src={`${import.meta.env.BASE_URL}${item.image.replace('./', '')}`}
                       alt={`${item.brand} Handcreme`}
@@ -174,81 +204,64 @@ export function HomeView() {
                       </span>
                     </div>
                     <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm border border-zinc-200 p-2 rounded-sm text-blue-700">
-                      <IconComp className="w-4 h-4" strokeWidth={2} />
-                    </div>
-                  </div>
-
-                  {/* Data & Origin */}
-                  <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-zinc-600 mb-4 font-bold">
-                    <span className="text-blue-700">ID.0{item.id}</span>
-                    <span className="w-8 h-[1px] bg-amber-400"></span>
-                    <span>{item.country}</span>
                   </div>
 
                   {/* Brand & Name */}
-                  <h2 className="font-bold text-xl text-zinc-950 tracking-tight">{item.brand}</h2>
-                  <h2 className="font-semibold text-lg text-zinc-800 mb-4 tracking-tight leading-snug line-clamp-2">{item.name}</h2>
+                  <div className="mb-4">
+                    <h2 className="font-bold text-xl text-zinc-950 tracking-tight">{item.brand}</h2>
+                    <h2 className="font-semibold text-lg text-zinc-800 tracking-tight leading-snug line-clamp-2">{item.name}</h2>
+                  </div>
 
                   {/* Description */}
                   <p className="text-zinc-700 text-base leading-relaxed mb-6 font-normal">
                     {item.description}
                   </p>
 
-                  {/* Details List */}
-                  {item.details && item.details.length > 0 && (
-                    <ul className="mb-8 space-y-2.5 text-base text-zinc-700 flex-grow">
-                      {item.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                          <span className="text-zinc-400 mt-0.5 flex-shrink-0 font-bold">—</span>
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mt-auto mb-6">
-                    <span className="text-xs font-mono bg-amber-200 text-amber-950 px-2.5 py-1 rounded-sm flex items-center justify-center min-w-[32px] font-bold">
-                      {item.priceLevel}
-                    </span>
-                    {item.tags.map(tag => (
-                      <span key={tag} className="text-xs font-mono border border-zinc-200 text-zinc-700 px-2.5 py-1 rounded-sm bg-zinc-50 font-medium">
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Editorial Section */}
+                  <div className="bg-zinc-50 p-4 rounded-sm border border-zinc-200 mb-6 space-y-3.5">
+                    {item.editorial.reason && (
+                      <div>
+                        <strong className="text-xs font-mono uppercase tracking-widest block text-zinc-500 mb-1">Warum hier gelistet:</strong>
+                        <p className="text-sm text-zinc-800">{item.editorial.reason}</p>
+                      </div>
+                    )}
+                    {item.editorial.target && (
+                      <div>
+                        <strong className="text-xs font-mono uppercase tracking-widest block text-zinc-500 mb-1">Für wen geeignet:</strong>
+                        <p className="text-sm text-zinc-800">{item.editorial.target}</p>
+                      </div>
+                    )}
+                    {item.editorial.caveat && (
+                      <div>
+                        <strong className="text-xs font-mono uppercase tracking-widest block text-zinc-500 mb-1">Was könnte stören:</strong>
+                        <p className="text-sm text-zinc-800">{item.editorial.caveat}</p>
+                      </div>
+                    )}
+                    <div className="pt-2 border-t border-zinc-200 mt-2 flex items-center justify-between">
+                       <div className="text-[10px] uppercase font-mono tracking-widest text-zinc-500">Basis: {item.editorial.basis}</div>
+                    </div>
                   </div>
 
-                  {/* Price Justification */}
-                  {item.priceJustification && (
-                    <div className="mb-6 p-4 border border-zinc-200 bg-zinc-50/50 rounded-sm text-sm text-zinc-700 flex items-start gap-3 leading-relaxed">
-                      <Info className="w-5 h-5 text-zinc-500 flex-shrink-0 mt-0.5" />
-                      <p>
-                        <strong className="font-mono text-xs uppercase text-zinc-900 block mb-1 font-bold">Preislogik</strong> 
-                        {item.priceJustification}
-                      </p>
-                    </div>
-                  )}
-
                   {/* Ingredients */}
-                  {item.ingredients && (
-                    <div className="mb-8 border-t border-zinc-200 pt-5 mt-2">
-                      <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2.5">Hauptinhaltsstoffe (Auszug)</h4>
-                      <p className="text-xs text-zinc-600 font-mono leading-relaxed break-words bg-zinc-50 p-3 border border-zinc-200 rounded-sm">
-                        {item.ingredients}
-                      </p>
-                    </div>
-                  )}
+                  {item.ingredients && <ExpandableIngredients ingredients={item.ingredients} />}
 
-                  {/* Action Button */}
-                  <a 
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2.5 w-full py-3.5 px-4 bg-blue-700 text-white text-xs font-mono font-bold uppercase tracking-widest transition-all duration-200 hover:bg-blue-800 rounded-sm hover:-translate-y-0.5"
-                  >
-                    Auf Amazon kaufen <MoveRight className="w-4 h-4" />
-                  </a>
+                  <div className="mt-auto pt-6 border-t border-zinc-200 flex flex-col gap-3">
+                    {/* Action Button */}
+                    <a 
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2.5 w-full py-3.5 px-4 bg-zinc-950 text-white text-xs font-mono font-bold uppercase tracking-widest transition-all duration-200 hover:bg-zinc-800 rounded-sm hover:-translate-y-0.5"
+                    >
+                      Bei Amazon ansehen <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+                    <div className="text-center text-[10px] text-zinc-400 font-sans">
+                      {item.labels && item.labels.includes('Affiliate-Link') && (
+                        <span>* Affiliate-Link. Kauf unterstützt diese Seite ohne Mehrkosten.</span>
+                      )}
+                    </div>
+                  </div>
+                  
                 </article>
               );
             })}
