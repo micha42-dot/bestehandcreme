@@ -75,11 +75,18 @@ export function HomeView() {
           },
           "description": item.description,
           "url": item.link,
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "EUR",
-            "url": item.link,
-            "availability": "https://schema.org/InStock"
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "BesteHandcreme.xyz"
+            },
+            "reviewBody": item.editorial.reason || item.description
           }
         }
       }))
@@ -100,8 +107,8 @@ export function HomeView() {
              Zuletzt aktualisiert: 12.06.2026
           </div>
           
-          <h1 className="font-medium text-4xl mb-6 tracking-tight leading-none text-zinc-950">
-            Die persönliche <span className="bg-yellow-300 text-blue-800 px-2 py-0.5 rounded-sm">Handcreme-Datenbank</span> mit Inhaltsstoff-Check.
+          <h1 className="font-medium text-4xl mb-6 tracking-tight leading-snug md:leading-tight text-zinc-950">
+            Die persönliche <span className="bg-yellow-300 text-blue-800 px-2 py-0.5 rounded-sm inline-block mt-1 md:mt-0">Handcreme-Datenbank</span>
           </h1>
           
           <div className="text-base md:text-lg text-zinc-700 max-w-3xl font-normal leading-relaxed mb-10 space-y-4">
