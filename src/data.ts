@@ -554,6 +554,90 @@ export const recommendations: Product[] = [
       caveat: 'Die Parfümierung ist etwas generisch und nicht jedermanns Sache.',
       basis: 'Selbst getestet'
     }
+  },
+  {
+    id: "20",
+    country: 'Frankreich',
+    brand: 'La Roche-Posay',
+    name: 'Lipikar Xerand Handcreme',
+    description: "Eine reparierende und schützende Handcreme für sehr trockene, beanspruchte Hände. Baut den Hydrolipidfilm wieder auf und pflegt mit hautberuhigendem Thermalwasser.",
+    tags: ['Apotheke', 'Glycerin', 'Allantoin', 'Schutzfilm'],
+    labels: ['nur INCI-Check', 'Affiliate-Link'],
+    priceLevel: '€€',
+    priceJustification: 'Apothekenprodukt mit Thermalwasser. Die ausgewogene Formulierung bietet therapeutischen Nutzen, für den man einen angemessenen Premium-Aufschlag zahlt.',
+    ingredients: 'Aqua / Water, Glycerin, Octyldodecanol, Stearic Acid, Peg-100 Stearate, Glyceryl Stearate, Palmitic Acid, Steareth-10, Paraffinum Liquidum / Mineral Oil, Dimethicone, Allantoin, Tetrasodium Edta, Capryloyl Glycine, Xanthan Gum, Cetyl Alcohol, Sodium Benzoate, Phenoxyethanol, Parfum / Fragrance.',
+    details: [
+      "Repariert die Hautbarriere (den Hydrolipidfilm) bei starker Austrocknung durch häufiges Waschen oder Kälte.",
+      "Das feuchtigkeitsspendende Glycerin wird hier mit dem wundheilenden Allantoin kombiniert.",
+      "Zieht rasch ein und fettet nicht stark nach, hinterlässt aber einen wasserabweisenden Film.",
+      "Leicht parfümiert und enthält klassische Filmbildner wie Dimethicone und Mineralöl."
+    ],
+    icon: 'droplets',
+    image: './bilder/Lipikar Xerand.jpg',
+    link: 'https://link.amazon/B05tLmZyO',
+    lastChecked: '2026-08-15',
+    editorial: {
+      reason: 'Eine extrem populäre Apotheken-Empfehlung bei Handekzemen oder berufsspezifischer Beanspruchung. Repariert gut und unaufgeregt.',
+      target: 'Chronisch trockene Hände, die einen verlässlichen Schutz vor dem nächsten Händewaschen brauchen.',
+      caveat: 'Setzt funktional auf Mineralöl (Paraffinum Liquidum), was Naturkosmetik-Fans meiden.',
+      basis: 'Inhaltsstoffanalyse & Herstellerangaben'
+    }
+  },
+  {
+    id: "21",
+    country: 'Deutschland',
+    brand: 'Santé Naturkosmetik',
+    name: 'Hand Reset Handcreme',
+    description: "Anti-Aging Naturkosmetik: Wirkt sanft gegen erste Fältchen mit Bakuchiol und versorgt die Haut durch 10% Glycerin und Bio-Sheabutter intensiv mit Feuchtigkeit.",
+    tags: ['Naturkosmetik', 'Anti-Aging', 'Vegan', 'Bakuchiol', 'Glycerin', 'Sheabutter'],
+    labels: ['nur INCI-Check', 'Affiliate-Link'],
+    priceLevel: '€€',
+    priceJustification: 'Zertifizierte Naturkosmetik mit einem spannenden Trend-Wirkstoff (Bakuchiol) und einer ordentlichen Konzentration an Glycerin (10%). Fairer Preis.',
+    ingredients: 'Aqua (Water), Glycerin, Aloe Barbadensis Leaf Juice, Caprylic/Capric Triglyceride, Butyrospermum Parkii (Shea) Butter, Dodecane, Sodium Stearoyl Glutamate, Cetearyl Alcohol, Cetyl Alcohol, Glyceryl Stearate SE, Xanthan Gum, Lactic Acid, Tocopherol, Bakuchiol, Sodium Lactate, Helianthus Annuus (Sunflower) Seed Oil, Citric Acid, PCA Ethyl Cocoyl Arginate, Potassium Sorbate, Parfum (Fragrance), Vanillin.',
+    details: [
+      "Enthält Bakuchiol, eine pflanzliche, verträglichere Alternative zu Retinol, die feine Linien mildern soll.",
+      "Hoher Glycerin-Anteil (10%) kombiniert mit Bio-Aloe Vera sorgt für eine massive Feuchtigkeitszufuhr.",
+      "Bio-Sheabutter pflegt die Hände weich, ohne allzu schwer aufzuliegen.",
+      "Zertifizierte Naturkosmetik, vegan."
+    ],
+    icon: 'leaf',
+    image: './bilder/Hand Reset.jpg',
+    link: 'https://link.amazon/B0fDGbubq',
+    lastChecked: '2026-08-15',
+    editorial: {
+      reason: 'Spannende Kombination aus Anti-Aging (Bakuchiol) und intensiver Feuchtigkeit (10% Glycerin) im Naturkosmetik-Segment.',
+      target: 'Trockene Hände, die eine Extraportion Feuchtigkeit und gleichzeitig Pflege gegen erste Fältchen und Pigmentierungen suchen.',
+      caveat: 'Enthält Duftstoffe.',
+      basis: 'Inhaltsstoffanalyse & Herstellerangaben'
+    }
+  },
+  {
+    id: "22",
+    country: 'Frankreich',
+    brand: 'Mixa',
+    name: 'Shea Ultra Soft Hand & Nagelcreme',
+    description: "Intensive Pflege für trockene Hände und Nägel aus der Drogerie. Die reichhaltige Formel mit 23% pflanzlichem Glycerin und Sheabutter zieht schnell ein, ohne zu kleben.",
+    tags: ['Drogerie', 'Glycerin', 'Sheabutter', 'Nägel', 'Zieht schnell ein'],
+    labels: ['nur INCI-Check', 'Affiliate-Link'],
+    priceLevel: '€',
+    priceJustification: 'Sehr gutes Preis-Leistungs-Verhältnis. Eine hochkonzentrierte Pflege (23% Glycerin + Sheabutter) zu einem günstigen Drogerie-Preis.',
+    ingredients: 'Aqua / Water, Glycerin, Cetearyl Alcohol, Glyceryl Stearate, Butyrospermum Parkii Butter / Shea Butter, Glyceryl Stearate SE, Dimethicone, Prunus Armeniaca Kernel Oil / Apricot Kernel Oil, Allantoin, Sodium Polyacrylate, Caprylyl Glycol, Citric Acid, Chlorhexidine Digluconate, CI 14700 / Red 4, Linalool, Geraniol, Eugenol, Limonene, Hydroxycitronellal, Citral, Citronellol, Hexyl Cinnamal, Benzyl Alcohol, Parfum / Fragrance.',
+    details: [
+      "Starke Feuchtigkeitswirkung durch sehr hohe Glycerin-Konzentration (23%).",
+      "Sheabutter und Aprikosenkernöl nähren nicht nur die Haut, sondern pflegen auch trockene Nagelhaut geschmeidig.",
+      "Zieht dank der geschickten Formulierung schnell ein und hinterlässt keine klebrigen Rückstände.",
+      "Das enthaltende Allantoin beruhigt zusätzlich beanspruchte Haut."
+    ],
+    icon: 'sparkles',
+    image: './bilder/Mixa Shea Ultra.jpg',
+    link: 'https://link.amazon/B01MyufS7',
+    lastChecked: '2026-08-15',
+    editorial: {
+      reason: 'Eine oft unterschätzte, aber sehr effektive Formulierung aus der Drogerie mit einem beachtlichen 23%-Anteil an Glycerin und Sheabutter.',
+      target: 'Für Personen mit trockenen Händen und spröder Nagelhaut, die viel Feuchtigkeit, aber keinen schmierigen Film wollen.',
+      caveat: 'Enthält ein breites Spektrum an deklarierungspflichtigen Duftstoffen, daher nichts für stark parfümempfindliche Nasen oder Allergiker.',
+      basis: 'Inhaltsstoffanalyse & Herstellerangaben'
+    }
   }
 ];
 
