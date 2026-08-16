@@ -104,7 +104,7 @@ export function HomeView() {
         <div className="max-w-4xl">
           <div className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-6 flex items-center gap-2">
              <span className="w-2 h-2 rounded-full bg-green-500"></span> 
-             Zuletzt aktualisiert: 12.06.2026
+             Zuletzt aktualisiert: 15.08.2026
           </div>
           
           <h1 className="font-medium text-4xl mb-6 tracking-tight leading-snug md:leading-tight text-zinc-950">
